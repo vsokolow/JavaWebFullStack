@@ -40,10 +40,12 @@ const renderCards = arr => {
 todosContainer.addEventListener('click', (event) => {
     const deleteBtn = event.target.closest('button');
     const card = event.target.closest('[data-id]');
+
     if(!card) return 
 
     if(deleteBtn){
-        renderCards(todos.filter(el => el.id !== +card.dataset.id))
+        todos = todos.filter(el => el.id !== +card.dataset.id)
+        renderCards(todos)
     } else {
         const targetCard = todos.find(el => el.id === +card.dataset.id);
         targetCard.completed =!targetCard.completed;
