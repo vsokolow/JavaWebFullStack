@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.square {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+.square_1 {
+    background-color: red;
+}
+
+.square_2 {
+    background-color: blue;
+}
+
+.square_3 {
+    background-color: orange;
+}
