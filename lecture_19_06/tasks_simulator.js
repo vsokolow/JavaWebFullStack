@@ -49,7 +49,7 @@ saveButton.addEventListener('click', () => {
     localStorage.setItem('appTheme', selectedTheme);
 
     // Мгновенно применяем выбранную тему к странице, меняя класс у body [INDEX]
-    body.className = selectedTheme;    
+    body.className = selectedTheme;
 });
 
 // *********
@@ -101,10 +101,47 @@ dataForm.addEventListener('input', () => {
 
 // Добавим логику для нашей кнопки Reset, чтобы форма не просто очищалась на экране,но и стирала черновик из памяти сессии
 resetBtn.addEventListener('click', () => {
-     // Очищаем саму HTML-форму
-     dataForm.reset();
+    // Очищаем саму HTML-форму
+    dataForm.reset();
 
-     // Удаляем запись из sessionStorage
-     sessionStorage.removeItem('formDataDraft');
+    // Удаляем запись из sessionStorage
+    sessionStorage.removeItem('formDataDraft');
 });
 
+// *********
+// TASK 3 WebSocket
+// *********
+
+// Создайте HTML-страницу с полем ввода и кнопкой для отправки сообщений. Напишите JavaScript-код, который устанавливает соединение с WebSocket-сервером по адресу ws://localhost:8080. При нажатии на кнопку, отправьте сообщение на сервер и отобразите все полученные сообщения в отдельном блоке на странице.
+
+const ws = new WebSocket('ws://localhost:8080');
+const messages = document.getElementById('messages');
+
+ws.addEventListener('open', (event) => {
+        console.log('Connected to the WebSocket server');
+        ws.send('Hello WebSocket!');
+    });
+
+ws.onmessage = function (event) {
+    //TODO:
+    const message = document.createElement('p');
+    message.textContent = event.data;
+    messages.appendChild(message);
+};
+
+document.getElementById('sendButton').onclick = function () {
+    //TODO:
+    const messageInput = document.getElementById('messageInput');
+    const message = messageInput.value;
+
+    if (ws.readyState === WebSocket.OPEN) {
+        ws.send(message);
+        messageInput.value = '';
+    } else {
+        console.warn('Невозможно отправить сообщение: соединение не установлено.');
+    };
+};
+
+ws.onerror = function (error) {
+    console.error('Ошибка WebSocket:', error);
+};
