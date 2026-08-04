@@ -119,7 +119,7 @@ const messages = document.getElementById('messages');
 
 ws.addEventListener('open', (event) => {
         console.log('Connected to the WebSocket server');
-        ws.send('Hello WebSocket!');
+        // ws.send('Hello WebSocket!');
     });
 
 ws.onmessage = function (event) {

@@ -12,7 +12,7 @@ wss.on('connection', (ws) => {
     console.log(`Получено: ${textMessage}`);
     
     // Отправляем обратно в браузер (эхо)
-    ws.send(`Сервер повторил: ${textMessage}`);
+    ws.send(textMessage);
   });
 });
 
