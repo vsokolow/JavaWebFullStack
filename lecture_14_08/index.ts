@@ -82,3 +82,5 @@ getProperty({ name: "Anna", age: 20 }, 'age'); // 20
 getProperty({ name: "Anna", age: 20 }, 'name'); // Anna
 // getProperty({ name: "Anna", age: 20 }, 'hello'); // ошибка
 
+
+
