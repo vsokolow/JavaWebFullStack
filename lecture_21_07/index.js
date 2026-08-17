@@ -111,7 +111,7 @@ try {
     // recursive: true позволяет создавать вложенные пути 'a/b/c'
 }
 // Чтение содержимого папки
-const files = await fs.readdir('temp'); console.log(files); 
+// const files = await fs.readdir('temp'); console.log(files); 
 // ['file1.txt', 'file2.txt']
 
 // Удалить папку со всем содержимым (аналог rm -rf)
