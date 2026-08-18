@@ -2,12 +2,15 @@ import http from 'http';
 import "dotenv/config";
 import { users } from './users.js';
 
-// const PORT = 4000;
+// const PORT = 3000;
 const PORT = process.env.PORT;
 
 // // Функция-обработчик (requestListener) вызывается на КАЖДЫЙ запрос
 const server = http.createServer((req, res) => {
     console.log(`[${new Date().toLocaleString('ru-RU')}] ${req.method}`);
+    console.log('URL:', req.url);
+    // console.log('Headers:', req.headers);
+    console.log(req.socket.remoteAddress);
    
     // Говорим браузеру: "Я отправляю тебе JSON"
     res.setHeader('Content-Type', 'application/json');
