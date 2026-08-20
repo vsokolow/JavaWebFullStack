@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "study": "nodemon tasks_solution.js"
+    "study": "nodemon --watch tasks_solution.js tasks_solution.js",
+    "server": "nodemon --watch tasks_solution_server.js tasks_solution_server.js"
   },
   "keywords": [],
   "author": "",
