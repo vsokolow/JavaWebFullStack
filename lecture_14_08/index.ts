@@ -21,13 +21,13 @@ const first1 = getFirstElem([1, 2, 3]);
 const first2 = getFirstElem(['hello', 'hi']);
 const first3 = getFirstElem([true, false]);
 
-interface Product {
+interface ProductFruit {
     id: number,
     title: string,
     price: number
 }
 
-const products: Product[] = [
+const products: ProductFruit[] = [
     {id: 1, title: "Apple", price: 100},
     {id: 2, title: "Orange", price: 150},
     {id: 3, title: "Mango", price: 90}
@@ -83,4 +83,49 @@ getProperty({ name: "Anna", age: 20 }, 'name'); // Anna
 // getProperty({ name: "Anna", age: 20 }, 'hello'); // ошибка
 
 
+// ====== Partial<T> ======
 
+interface User {
+    name: string,
+    email: string,
+    age: number,
+}
+
+// Функция updateUser принимает два аргумента - пользователь и объект с данными, которые надо обновить - и возвращает
+// обновленный объект пользователя, соответствующий интерфейсу User
+
+function updateUser(user: User, fieldsToUpdate: Partial<User>): User {
+  return { ...user, ...fieldsToUpdate };
+}
+
+const user = {
+    name: "Alice",
+    email: "alice@gmail.com",
+    age: 20
+}
+
+const updatedUser = updateUser(user, {name: "Kate", age: 30});
+
+// ===== Pick<T, K> и Omit<T, K> =====
+
+interface User2 {
+    id: number,
+    name: string,
+    email: string,
+    age: number,
+    password: string,
+    createdAt: Date
+}
+
+type userCard = Pick<User2, 'id' | 'name' | 'email'>
+
+interface Product {
+    id: number,
+    title: string,
+    price: number,
+    description: string,
+    count: number,
+    rating: number
+}
+
+type productCard = Pick<Product, 'id' | 'title' | 'price' | 'rating'>
