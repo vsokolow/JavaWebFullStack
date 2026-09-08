@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог товаров</title>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Каталог товаров</h1>
+
+      <!-- Панель управления: поиск + фильтр по категории -->
+      <div class="controls">
+        <input id="search" type="search" placeholder="Поиск по названию…" />
+
+        <!-- Пункты этого select'а мы заполним из кода, из массива CATEGORIES -->
+        <select id="category">
+          <option value="all">Все категории</option>
+        </select>
+      </div>
+
+      <!-- Сюда пишем «Загрузка…» и текст ошибки -->
+      <p id="status" class="status"></p>
+
+      <!-- Сюда рендерим карточки товаров -->
+      <div id="list" class="list"></div>
+
+      <!-- Детальный блок. Скрыт, пока не кликнули по карточке -->
+      <div id="details" class="details" hidden></div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
